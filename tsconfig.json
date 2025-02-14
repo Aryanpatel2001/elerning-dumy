@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    // "target": "es2016",
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "rootDir": "../server",
+    "outDir": "./build",
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": ["src/**/*", "types/**/*.d.ts", "./**/*.ts"] // Add your types folder here
+}
