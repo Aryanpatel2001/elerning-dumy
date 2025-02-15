@@ -12,6 +12,10 @@ import notificationRoute from "./routes/notification.route";
 import layoutRouter from "./routes/layout.route";
 import { ErrorMiddleware } from "./middleware/error";
 import { rateLimit } from "express-rate-limit";
+app.use(express.json({ limit: "10mb" }));
+app.use(cookieParser());
+// Adjust the size as per your needs
+
 app.use(
   cors({
     origin: ["https://lernify-inky.vercel.app"], // Adjust this to your frontend domain
@@ -26,11 +30,9 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
-app.use(express.json({ limit: "10mb" })); // Adjust the size as per your needs
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 app.use(express.json());
-app.use(cookieParser());
 
 // Define your routes after the CORS middleware
 app.use(
