@@ -14,7 +14,7 @@ import { ErrorMiddleware } from "./middleware/error";
 import { rateLimit } from "express-rate-limit";
 app.use(
   cors({
-    origin: ["https://lernify-inky.vercel.app/"], // Adjust this to your frontend domain
+    origin: ["https://lernify-inky.vercel.app"], // Adjust this to your frontend domain
     credentials: true, // Allow sending cookies
   })
 );
