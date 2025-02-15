@@ -18,7 +18,7 @@ const layout_route_1 = __importDefault(require("./routes/layout.route"));
 const error_1 = require("./middleware/error");
 const express_rate_limit_1 = require("express-rate-limit");
 exports.app.use((0, cors_1.default)({
-    origin: "http://localhost:3000", // Adjust this to your frontend domain
+    origin: ["http://localhost:3000"], // Adjust this to your frontend domain
     credentials: true, // Allow sending cookies
 }));
 const limiter = (0, express_rate_limit_1.rateLimit)({
@@ -38,6 +38,12 @@ exports.app.get("/test", (req, res, next) => {
     res.status(200).json({
         success: true,
         message: "Api is working",
+    });
+});
+exports.app.use((req, res, next) => {
+    res.status(404).json({
+        success: false,
+        message: `Route ${req.originalUrl} not found`,
     });
 });
 exports.app.all("*", (req, res, next) => {

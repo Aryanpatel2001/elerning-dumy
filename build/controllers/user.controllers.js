@@ -162,10 +162,7 @@ exports.updateAccessToken = (0, catchAsyncErrors_1.CatchAsyncError)(async (req, 
         });
         req.user = user;
         res.cookie("access_token", accessToken, jwt_1.accessTokenOptions);
-        res.cookie("refresh_token", refreshToken, {
-            httpOnly: true,
-            secure: false,
-        });
+        res.cookie("refresh_token", refreshToken, jwt_1.refreshTokenOptions);
         console.log("User INFO", user);
         await redis_1.redis.set(user._id, JSON.stringify(user), "EX", 604800); //expire after 7 day
         next();

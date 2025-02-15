@@ -14,7 +14,7 @@ import { ErrorMiddleware } from "./middleware/error";
 import { rateLimit } from "express-rate-limit";
 app.use(
   cors({
-    origin: "https://learnify-nine-sigma.vercel.app", // Adjust this to your frontend domain
+    origin: ["http://localhost:3000"], // Adjust this to your frontend domain
     credentials: true, // Allow sending cookies
   })
 );
@@ -48,6 +48,13 @@ app.get("/test", (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({
     success: true,
     message: "Api is working",
+  });
+});
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.status(404).json({
+    success: false,
+    message: `Route ${req.originalUrl} not found`,
   });
 });
 

@@ -314,10 +314,7 @@ export const updateAccessToken = CatchAsyncError(
       req.user = user;
 
       res.cookie("access_token", accessToken, accessTokenOptions);
-      res.cookie("refresh_token", refreshToken, {
-        httpOnly: true,
-        secure: false,
-      });
+      res.cookie("refresh_token", refreshToken, refreshTokenOptions);
       console.log("User INFO", user);
 
       await redis.set(user._id, JSON.stringify(user), "EX", 604800); //expire after 7 day
