@@ -10,5 +10,5 @@ const user_controllers_1 = require("../controllers/user.controllers");
 const layoutRouter = express_1.default.Router();
 layoutRouter.post("/create-layout", user_controllers_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)("admin"), layout_controller_1.createLayout);
 layoutRouter.put("/edit-layout", user_controllers_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)("admin"), layout_controller_1.editLayout);
-layoutRouter.get("/get-layout/:type", auth_1.isAuthenticated, layout_controller_1.getLayoutByType);
+layoutRouter.get("/get-layout/:type", layout_controller_1.getLayoutByType);
 exports.default = layoutRouter;

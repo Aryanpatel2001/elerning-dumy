@@ -18,7 +18,7 @@ const layout_route_1 = __importDefault(require("./routes/layout.route"));
 const error_1 = require("./middleware/error");
 const express_rate_limit_1 = require("express-rate-limit");
 exports.app.use((0, cors_1.default)({
-    origin: ["http://localhost:3000"], // Adjust this to your frontend domain
+    origin: ["https://lernify-inky.vercel.app/"], // Adjust this to your frontend domain
     credentials: true, // Allow sending cookies
 }));
 const limiter = (0, express_rate_limit_1.rateLimit)({
